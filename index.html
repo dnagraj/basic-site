@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 1em;
+            margin: 0 1em;
+        }
+
+        section {
+            padding: 2em;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .active-tab {
+            display: block;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .pagination li {
+            margin: 0.5em;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            padding: 0.5em;
+            background-color: #666;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .pagination .active {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Beautiful Website</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showTab('tab1')">Tab 1</a>
+        <a href="#" onclick="showTab('tab2')">Tab 2</a>
+        <a href="#" onclick="showTab('tab3')">Tab 3</a>
+    </nav>
+
+    <section>
+        <div id="tab1" class="tab-content active-tab">
+            <h2>Tab 1 Content</h2>
+            <!-- Your content for Tab 1 goes here -->
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h2>Tab 2 Content</h2>
+            <!-- Your content for Tab 2 goes here -->
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h2>Tab 3 Content</h2>
+            <!-- Your content for Tab 3 goes here -->
+        </div>
+
+        <ul class="pagination">
+            <li><a href="#" onclick="changePage(-1)">Previous</a></li>
+            <li><a href="#" class="active" onclick="changePage(1)">1</a></li>
+            <li><a href="#" onclick="changePage(2)">2</a></li>
+            <li><a href="#" onclick="changePage(3)">3</a></li>
+            <li><a href="#" onclick="changePage(4)">4</a></li>
+            <li><a href="#" onclick="changePage(5)">5</a></li>
+            <li><a href="#" onclick="changePage(6)">Next</a></li>
+        </ul>
+    </section>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+
+            // Show the selected tab
+            document.getElementById(tabId).classList.add('active-tab');
+        }
+
+        function changePage(offset) {
+            // Implement pagination logic here
+            // For simplicity, this example just changes the active class in the pagination links
+            const paginationLinks = document.querySelectorAll('.pagination a');
+            paginationLinks.forEach(link => link.classList.remove('active'));
+
+            // Assuming the current active page is 1, adjust it based on the offset
+            let currentPage = 1;
+            paginationLinks.forEach(link => {
+                if (link.classList.contains('active')) {
+                    currentPage = parseInt(link.textContent);
+                }
+            });
+
+            const newPage = currentPage + offset;
+
+            if (newPage >= 1 && newPage <= 6) {
+                paginationLinks[newPage].classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
