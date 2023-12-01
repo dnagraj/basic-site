@@ -66,6 +66,30 @@
         .pagination .active {
             background-color: #333;
         }
+
+        .dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -76,7 +100,12 @@
 
     <nav>
         <a href="#" onclick="showTab('pythonScripts')">Python Scripts</a>
-        <a href="#" onclick="showTab('devOps')">DevOps</a>
+        <div class="dropdown">
+            <a href="#" onclick="showTab('devOps')">DevOps</a>
+            <div class="dropdown-content">
+                <a href="#" onclick="showSubTab('azureDevops')">Azure DevOps</a>
+            </div>
+        </div>
         <a href="#" onclick="showTab('tools')">Tools</a>
     </nav>
 
@@ -88,10 +117,12 @@
 
         <div id="devOps" class="tab-content">
             <h2>DevOps Content</h2>
-            <div id="azureDevops" style="margin-top: 1em;">
-                <h3>Azure DevOps</h3>
-                <!-- Your content for Azure DevOps goes here -->
-            </div>
+            <!-- Content for DevOps goes here -->
+        </div>
+
+        <div id="azureDevops" class="tab-content">
+            <h3>Azure DevOps Content</h3>
+            <!-- Your content for Azure DevOps goes here -->
         </div>
 
         <div id="tools" class="tab-content">
@@ -118,6 +149,15 @@
 
             // Show the selected tab
             document.getElementById(tabId).classList.add('active-tab');
+        }
+
+        function showSubTab(subTabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+
+            // Show the selected sub-tab
+            document.getElementById(subTabId).classList.add('active-tab');
         }
 
         function changePage(offset) {
