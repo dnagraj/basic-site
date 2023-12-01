@@ -8,18 +8,19 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
+            color: #333;
         }
 
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             text-align: center;
             padding: 1em;
         }
 
         nav {
-            background-color: #444;
+            background-color: #343a40;
             color: #fff;
             text-align: center;
             padding: 1em;
@@ -30,6 +31,11 @@
             text-decoration: none;
             padding: 1em;
             margin: 0 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffc107;
         }
 
         section {
@@ -58,26 +64,43 @@
         .pagination a {
             text-decoration: none;
             padding: 0.5em;
-            background-color: #666;
+            background-color: #343a40;
             color: #fff;
             border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        .pagination a:hover,
         .pagination .active {
-            background-color: #333;
+            background-color: #ffc107;
+            color: #343a40;
         }
 
         .dropdown {
             display: inline-block;
+            position: relative;
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            padding: 1em;
+            margin: 0 1em;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown:hover a {
+            color: #ffc107;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #444;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            background-color: #343a40;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
+            border-radius: 4px;
         }
 
         .dropdown-content a {
@@ -85,10 +108,12 @@
             padding: 12px 16px;
             display: block;
             text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
+        .dropdown-content a:hover {
+            background-color: #ffc107;
+            color: #343a40;
         }
     </style>
 </head>
